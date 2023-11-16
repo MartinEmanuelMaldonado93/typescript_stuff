@@ -35,3 +35,13 @@ type three = Prettify<unionOfTypes>; // after ->
 //     age: number;
 //     role: string;
 // }
+
+async function getSomeDataFromApi(values: number[] | null) {
+  return "hola";
+}
+
+type data = NonNullable<Awaited<ReturnType<typeof getSomeDataFromApi>>>;
+type dataParameters = Awaited<Parameters<typeof getSomeDataFromApi>[0]>;
+type dataParametersWithoutFalsy = NonNullable<
+  Awaited<Parameters<typeof getSomeDataFromApi>[0]>
+>;
